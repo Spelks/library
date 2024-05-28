@@ -1,5 +1,74 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('./font/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --page-font: 'Poppins', Helvetica, Arial, sans-serif;
+    --shelf-clr: 25, 76%, 31%;
+    --main-padding: 20px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+html {
+    font-size: 18px;
+}
+
+body {
+    background-color: #E0FFFF;
+    font-family: var(--page-font);
+    text-decoration: none;
+}
+
+h1, .bookshelf .shelf, .book {
+    display: flex;
+}
+
+h1, .book {
+    justify-content: center;
+    align-items: center;
+}
+
+h1, .library-main {
+    padding: var(--main-padding);
+}
+
+.bookshelf {
+    background-color: hsl(var(--shelf-clr), .8);
+    width: 100%;
+    padding: var(--main-padding);
+    border-radius: 10px;
+}
+
+.bookshelf .shelf {
+    flex-wrap: wrap;
+    background-color: hsl(var(--shelf-clr));
+    gap: 1.75em;
+    padding: var(--main-padding);
+}
+
+.book {
+    background-color: #FFD700;
+    height: 300px;
+    width: 100px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.book p {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transform: rotate(180deg);
+}
+
+
