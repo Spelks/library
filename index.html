@@ -10,6 +10,29 @@
 <body>
     <h1>Library</h1>
     <main class="library-main">
+        <div class="dialog-container">
+            <dialog>
+                <button autofocus>Close</button>
+                <form id="add-book-form">
+                  <div class="form-row">
+                      <input type="text" id="book_title" name="book_title" required>
+                      <label for="book_title">Title</label>
+                  </div>
+                  <div class="form-row">
+                      <input type="text" id="book_author" name="book_author" required>
+                      <label for="book_author">Author</label>
+                  </div>
+                  <div class="form-row">
+                      <input type="number" id="book_pages" name="book_pages" required>
+                      <label for="book_pages">Number of Pages</label>
+                  </div>
+                  <div class="form-row">
+                      <button type="submit">Add Book</button>
+                  </div>
+              </form>
+            </dialog>
+            <button>Add Book</button>
+        </div>
         <div class="bookshelf">
             <div class="shelf">
                 <div class="book"><p>The Lord of the Rings</p></div>
