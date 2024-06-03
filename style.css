@@ -7,8 +7,12 @@
 
 :root {
     --page-font: 'Poppins', Helvetica, Arial, sans-serif;
-    --shelf-clr: 25, 76%, 31%;
     --main-padding: 20px;
+
+    --shelf-clr: 25, 76%, 31%;
+    --white-clr: 0, 0%, 100%;
+
+    --box-shadow: 0, 0%, 0%;
 }
 
 * {
@@ -22,7 +26,7 @@ html {
 }
 
 body {
-    background-color: #E0FFFF;
+    background-color: hsl(var(--white-clr));
     font-family: var(--page-font);
     text-decoration: none;
 }
@@ -59,7 +63,7 @@ h1, .library-main {
     height: 300px;
     width: 100px;
     border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px hsl(var(--box-shadow), 0.1);
     cursor: pointer;
 }
 
@@ -70,5 +74,19 @@ h1, .library-main {
     font-size: 1.2rem;
     transform: rotate(180deg);
 }
+
+::backdrop {
+    background-color: hsl(var(--white-clr));
+    opacity: 0.75;
+}
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px hsl(var(--box-shadow), 0.1);
+    padding: var(--main-padding);
+    margin: auto;
+}
+  
 
 
