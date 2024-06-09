@@ -59,11 +59,12 @@ h1, .library-main {
 }
 
 .book {
-    background-color: #FFD700;
-    height: 300px;
     width: 100px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px hsl(var(--box-shadow), 0.1);
+    height: 300px;
+    background: #F5DEB3;
+    border: 1px solid #8B4513;
+    border-radius: 20% 20% 3% 5% / 1% 1% 10% 60%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
@@ -84,9 +85,16 @@ dialog {
     border: none;
     border-radius: 8px;
     box-shadow: 0 4px 6px hsl(var(--box-shadow), 0.1);
-    padding: var(--main-padding);
     margin: auto;
 }
-  
 
+.close-btn-header {
+    padding: 5px 20px;
+    text-align: end;
+}
 
+.close-btn-header > button {
+    border: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
