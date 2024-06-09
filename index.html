@@ -12,18 +12,20 @@
     <main class="library-main">
         <div class="dialog-container">
             <dialog>
-                <button autofocus>Close</button>
+                <div class="close-btn-header">
+                    <button autofocus>X</button>
+                </div>
                 <form id="add-book-form">
                   <div class="form-row">
                       <input type="text" id="book_title" name="book_title" required>
                       <label for="book_title">Title</label>
                   </div>
                   <div class="form-row">
-                      <input type="text" id="book_author" name="book_author" required>
+                      <input type="text" id="book_author" name="book_author">
                       <label for="book_author">Author</label>
                   </div>
                   <div class="form-row">
-                      <input type="number" id="book_pages" name="book_pages" required>
+                      <input type="number" id="book_pages" name="book_pages">
                       <label for="book_pages">Number of Pages</label>
                   </div>
                   <div class="form-row">
