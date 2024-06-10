@@ -17,10 +17,11 @@ closeButton.addEventListener("click", () => {
 
 const myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary(event) {
@@ -28,7 +29,10 @@ function addBookToLibrary(event) {
   const title = document.querySelector("[data-title]").value;
   const author = document.querySelector("[data-author]").value;
   const pages = document.querySelector("[data-pages]").value;
+  const read = document.querySelector("[data-read").checked;
+
+  myLibrary.push(new Book(title, author, pages, read));
+
   dialog.close();
   bookForm.reset();
-  myLibrary.push(new Book(title, author, pages));
 }
