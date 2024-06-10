@@ -50,10 +50,14 @@ function addBookToLibrary(event) {
 function showBookOnShelf() {
   const newDiv = document.createElement("div");
   const newP = document.createElement("p");
+  const authorP = document.createElement("p");
   myLibrary.forEach(book => {
     shelf.appendChild(newDiv);
     newDiv.appendChild(newP);
+    newDiv.appendChild(authorP);
     newP.textContent = book.title;
+    authorP.textContent = book.author;
     newDiv.classList.add("book");    
   });
 }
+
