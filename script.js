@@ -1,7 +1,10 @@
+addEventListener("DOMContentLoaded", showBookOnShelf);
+
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const closeButton = document.querySelector("dialog button");
 const bookForm = document.querySelector("[data-book-form]");
+const shelf = document.querySelector("[data-shelf]");
 
 bookForm.addEventListener("submit", addBookToLibrary);
 
@@ -15,7 +18,14 @@ closeButton.addEventListener("click", () => {
   dialog.close();
 });
 
-const myLibrary = [];
+const myLibrary = [
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "pages": "281",
+    "read": true
+  }
+];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -32,10 +42,18 @@ function addBookToLibrary(event) {
   const read = document.querySelector("[data-read").checked;
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-
-  console.log("New book added:", book.title);
-  console.log("updated library:", myLibrary);
-
+  showBookOnShelf();
   dialog.close();
   bookForm.reset();
+}
+
+function showBookOnShelf() {
+  const newDiv = document.createElement("div");
+  const newP = document.createElement("p");
+  myLibrary.forEach(book => {
+    shelf.appendChild(newDiv);
+    newDiv.appendChild(newP);
+    newP.textContent = book.title;
+    newDiv.classList.add("book");    
+  });
 }
