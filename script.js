@@ -30,8 +30,11 @@ function addBookToLibrary(event) {
   const author = document.querySelector("[data-author]").value;
   const pages = document.querySelector("[data-pages]").value;
   const read = document.querySelector("[data-read").checked;
+  const book = new Book(title, author, pages, read);
+  myLibrary.push(book);
 
-  myLibrary.push(new Book(title, author, pages, read));
+  console.log("New book added:", book.title);
+  console.log("updated library:", myLibrary);
 
   dialog.close();
   bookForm.reset();
