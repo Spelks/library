@@ -76,6 +76,11 @@ h1, .library-main {
     transform: rotate(180deg);
 }
 
+.book p:nth-child(2) {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
 ::backdrop {
     background-color: hsl(var(--white-clr));
     opacity: 0.75;
