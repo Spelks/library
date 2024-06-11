@@ -49,10 +49,13 @@ function addBookToLibrary(event) {
 
 function showBookOnShelf() {
   const newDiv = document.createElement("div");
+  const deleteBtn = document.createElement("button");
   const newP = document.createElement("p");
   const authorP = document.createElement("p");
   myLibrary.forEach(book => {
     shelf.appendChild(newDiv);
+    newDiv.appendChild(deleteBtn);
+    deleteBtn.textContent = "X";
     newDiv.appendChild(newP);
     newDiv.appendChild(authorP);
     newP.textContent = book.title;
