@@ -1,4 +1,4 @@
-addEventListener("DOMContentLoaded", showBookOnShelf);
+addEventListener("DOMContentLoaded", showBookOnShelf); //Add placeholder book upon page load
 
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
@@ -18,6 +18,7 @@ closeButton.addEventListener("click", () => {
   dialog.close();
 });
 
+//Library array containing placeholder book
 const myLibrary = [
   {
     "title": "To Kill a Mockingbird",
@@ -34,6 +35,7 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+//Gets the form data and pushes it to the myLibrary array
 function addBookToLibrary(event) {
   event.preventDefault();
   const title = document.querySelector("[data-title]").value;
@@ -47,6 +49,7 @@ function addBookToLibrary(event) {
   bookForm.reset();
 }
 
+//Creates the visual representation of the book and applies a data attribute
 function showBookOnShelf() {
   const newDiv = document.createElement("div");
   const deleteBtn = document.createElement("button");
@@ -60,7 +63,7 @@ function showBookOnShelf() {
     newDiv.appendChild(authorP);
     newP.textContent = book.title;
     authorP.textContent = book.author;
-    newDiv.classList.add("book");    
+    newDiv.classList.add("book");
+    newDiv.setAttribute("data-id", myLibrary.length -1);  //Data attibute testing  
   });
 }
-
