@@ -49,6 +49,7 @@ h1, .library-main {
     width: 100%;
     padding: var(--main-padding);
     border-radius: 10px;
+
 }
 
 .bookshelf .shelf {
@@ -56,6 +57,7 @@ h1, .library-main {
     background-color: hsl(var(--shelf-clr));
     gap: 1.75em;
     padding: var(--main-padding);
+    min-height: 340px;
 }
 
 .book {
