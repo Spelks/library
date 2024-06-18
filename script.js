@@ -28,6 +28,7 @@ const myLibrary = [
   }
 ];
 
+// Book constructor function to create new book objects
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -55,11 +56,14 @@ function showBookOnShelf() {
   myLibrary.forEach((book, index) => {
     const newDiv = document.createElement("div");
     const deleteBtn = document.createElement("button");
+    const readBtn = document.createElement("button");
     const newP = document.createElement("p");
     const authorP = document.createElement("p");
     shelf.appendChild(newDiv);
     newDiv.appendChild(deleteBtn);
+    newDiv.appendChild(readBtn);
     deleteBtn.textContent = "X";
+    readBtn.textContent = "Read?"
     newDiv.appendChild(newP);
     newDiv.appendChild(authorP);
     newP.textContent = book.title;
@@ -69,7 +73,15 @@ function showBookOnShelf() {
     deleteBtn.addEventListener("click", ()=> {
       deleteBook(newDiv);
     });
+    readBtn.addEventListener("click", ()=> {
+      toggleRead(index);
+    });
   });
+}
+
+// Function to toggle the 'read' status of a book
+function toggleRead(index) {
+  myLibrary[index].read = !myLibrary[index].read;
 }
 
 //Removes book div (and all children) matching library array object then runs book function to refresh 
