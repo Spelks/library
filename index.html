@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Library</h1>
+    <header>
+        <img src="img/book-half.svg" alt="Book Icon">
+        <h1>Library</h1> 
+    </header>  
     <main class="library-main">
-        <div class="dialog-container">
-            <dialog>
-                <div class="close-btn-header">
-                    <button autofocus>X</button>
-                </div>
-                <form id="book-form" data-book-form>
-                  <div class="form-row">
-                      <label for="title">Title</label>
-                      <input type="text" id="title" data-title name="title" required>
-                  </div>
-                  <div class="form-row">
-                      <label for="author">Author</label>
-                      <input type="text" id="author" data-author name="author">
-                  </div>
-                  <div class="form-row">
-                      <label for="pages">Number of Pages</label>
-                      <input type="number" id="pages" data-pages name="pages">
-                  </div>
-                  <div class="form-row">
-                    <label for="read">Read?</label>
-                    <input type="checkbox" id="read" data-read name="read">
-                  </div>
-                  <div class="form-row">
-                      <button type="submit">Add Book</button>
-                  </div>
-              </form>
-            </dialog>
-            <button>Add Book</button>
-        </div>
         <div class="bookshelf">
+            <div class="form-container">
+                <dialog>
+                    <div class="close-btn-header">
+                        <button autofocus>X</button>
+                    </div>
+                    <form id="book-form" data-book-form>
+                      <div class="form-row">
+                          <label for="title">Title</label>
+                          <input type="text" id="title" data-title name="title" required>
+                      </div>
+                      <div class="form-row">
+                          <label for="author">Author</label>
+                          <input type="text" id="author" data-author name="author" required>
+                      </div>
+                      <div class="form-row">
+                          <label for="pages">Number of Pages</label>
+                          <input type="number" id="pages" data-pages name="pages" required>
+                      </div>
+                      <div class="form-row">
+                        <label for="read">Read?</label>
+                        <input type="checkbox" id="read" data-read name="read" required>
+                      </div>
+                      <div class="form-row">
+                          <button type="submit">Add Book</button>
+                      </div>
+                  </form>
+                </dialog>
+                <button>Add Book</button>
+            </div>      
             <div class="shelf" data-shelf></div>
         </div>
-    </main>    
+    </main>   
 </body>
 </html>
