@@ -70,18 +70,23 @@ function showBookOnShelf() {
     authorP.textContent = book.author;
     newDiv.classList.add("book");
     newDiv.setAttribute("data-id", index);
+    toggleBookColor(index, newDiv);
     deleteBtn.addEventListener("click", ()=> {
       deleteBook(newDiv);
     });
     readBtn.addEventListener("click", ()=> {
-      toggleRead(index);
+      myLibrary[index].read = !myLibrary[index].read;
+      toggleBookColor(index, newDiv);
     });
   });
 }
 
-// Function to toggle the 'read' status of a book
-function toggleRead(index) {
-  myLibrary[index].read = !myLibrary[index].read;
+function toggleBookColor(index, book) {
+  if(myLibrary[index].read === true) {
+    book.style.backgroundColor = "rgb(124, 202, 124)";
+  } else if (myLibrary[index].read === false) {
+    book.style.backgroundColor = "rgb(216, 78, 78)";
+  }
 }
 
 //Removes book div (and all children) matching library array object then runs book function to refresh 
