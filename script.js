@@ -1,4 +1,12 @@
-addEventListener("DOMContentLoaded", showBookOnShelf); //Add placeholder book upon page load
+document.addEventListener("DOMContentLoaded", ()=> {
+  addEventListener("DOMContentLoaded", showBookOnShelf); //Add placeholder book upon page load
+  document.querySelectorAll("input").forEach(input => {
+    checkInput(input); // Check input on page load
+    input.addEventListener("input", () => {
+      checkInput(input);
+    });
+  });
+});
 
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
@@ -94,4 +102,12 @@ function deleteBook(book) {
   shelf.removeChild(book);
   myLibrary.splice(book.getAttribute("data-id"), 1);
   showBookOnShelf();
+}
+
+function checkInput(input) {
+  if (input.value) {
+    input.classList.add("is-valid");
+  } else {
+    input.classList.remove("is-valid");
+  }
 }
