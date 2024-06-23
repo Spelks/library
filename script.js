@@ -56,7 +56,15 @@ function addBookToLibrary(event) {
   showBookOnShelf();
   dialog.close();
   bookForm.reset();
+  labelReset();
 }
+
+function labelReset() {
+  title.classList.remove("is-valid");
+  author.classList.remove("is-valid");
+  pages.classList.remove("is-valid");
+}
+
 
 //Creates the visual representation of the book and applies a data attribute
 function showBookOnShelf() {
