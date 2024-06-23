@@ -261,3 +261,29 @@ label:hover {
   color: hsl(var(--blue-clr));
   font-weight: 400;
 }
+
+dialog[open] {
+    animation: scaleIn 0.5s ease normal;
+}
+
+dialog {
+    animation: scaleOut 0.5s ease normal;
+}
+  
+@keyframes scaleIn{
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes scaleOut{
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 0;
+    }
+}
