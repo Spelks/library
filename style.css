@@ -206,7 +206,7 @@ button:hover {
 }
 
 /* Form related classes */
-.form-input-container {
+.popup-container {
     padding: var(--medium-px);
 }
 
