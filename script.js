@@ -13,18 +13,18 @@ const showFormBtn = document.querySelector("[data-dialog-form] + button");
 const closeFormBtn = document.querySelector("[data-dialog-form] button");
 const bookForm = document.querySelector("[data-book-form]");
 const shelf = document.querySelector("[data-shelf]");
+const popupTitle = document.querySelector("[data-popup-title");
+const popupAuthor = document.querySelector("[data-popup-author");
+const popupPages = document.querySelector("[data-popup-pages");
+const popupRead = document.querySelector("[data-popup-read");
+const dialogInfo = document.querySelector("[data-dialog-info]");
+const closeInfoBtn = document.querySelector("[data-dialog-info] button");
 
+//eventListeners for dialog pop-ups and book form
+closeInfoBtn.addEventListener("click", ()=> dialogInfo.close());
+closeFormBtn.addEventListener("click", ()=> dialogForm.close());
+showFormBtn.addEventListener("click", ()=> dialogForm.showModal());
 bookForm.addEventListener("submit", addBookToLibrary);
-
-// Initial "Add Book" button opens the dialog modally
-showFormBtn.addEventListener("click", () => {
-  dialogForm.showModal();
-});
-
-// "Close" button closes the dialog
-closeFormBtn.addEventListener("click", () => {
-  dialogForm.close();
-});
 
 //Library array containing placeholder book
 const myLibrary = [
@@ -59,6 +59,7 @@ function addBookToLibrary(event) {
   labelReset();
 }
 
+//resets labels to default state once submitted
 function labelReset() {
   title.classList.remove("is-valid");
   author.classList.remove("is-valid");
@@ -96,12 +97,11 @@ function showBookOnShelf() {
       myLibrary[index].read = !myLibrary[index].read;
       toggleBookColor(index, newDiv);
     });
-
-
     openBook(newDiv, index);
   });
 }
 
+//flips background color of book based on read state
 function toggleBookColor(index, book) {
   if(myLibrary[index].read === true) {
     book.style.backgroundColor = "rgb(124, 202, 124)";
@@ -117,12 +117,25 @@ function deleteBook(book) {
   showBookOnShelf();
 }
 
+//pulls object data from myLibrary and displays in pop-up when book is clicked
 function openBook(book, index) {
   book.addEventListener("click", ()=> {
-    alert(`Book: ${myLibrary[index].title}. Author: ${myLibrary[index].author}. Pages: ${myLibrary[index].pages}. Read: ${myLibrary[index].read}`);
+    dialogInfo.showModal();
+    popupTitle.textContent = myLibrary[index].title;
+    popupAuthor.textContent = myLibrary[index].author;
+    popupPages.textContent = myLibrary[index].pages;
+    popupRead.textContent = myLibrary[index].read;
+    if(myLibrary[index].read === true) {
+      popupRead.textContent = "Have Read";
+      popupRead.style.color = "green";
+    } else {
+      popupRead.textContent = "Have Not Read";
+      popupRead.style.color = "red";
+    }
   })
 }
 
+//adds/removes class to position label state
 function checkInput(input) {
   if (input.value) {
     input.classList.add("is-valid");
