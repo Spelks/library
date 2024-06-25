@@ -36,7 +36,8 @@ body {
 }
 
 header, h1, .bookshelf .shelf, .book, 
-.form-container, .form-row, .form-row-checkbox {
+.form-container, .form-row, .form-row-checkbox,
+.book-info-row {
     display: flex;
 }
 
@@ -205,9 +206,28 @@ button:hover {
     z-index: 1;
 }
 
+.book-info-row {
+    justify-content: space-between;
+    border-bottom: 2px solid hsl(var(--blue-clr));
+    font-size: 1.2rem;
+}
+
+.book-info-row p {
+    margin-right: var(--medium-px);
+    color: hsl(var(--blue-clr));
+}
+
 /* Form related classes */
 .popup-container {
     padding: var(--medium-px);
+}
+
+.popup-container p {
+    font-weight: 900;
+}
+
+.popup-container p span {
+    font-weight: 300;
 }
 
 .read-label, .form-row {
@@ -269,6 +289,10 @@ label:hover {
   font-weight: 400;
 }
 
+dialog {
+    min-width: 300px;
+}
+
 dialog[open] {
     animation: scaleIn 0.5s ease normal;
 }
@@ -281,3 +305,4 @@ dialog[open] {
         scale: 1;
     }
 }
+
