@@ -8,22 +8,22 @@ document.addEventListener("DOMContentLoaded", ()=> {
   });
 });
 
-const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
+const dialogForm = document.querySelector("[data-dialog-form]");
+const showFormBtn = document.querySelector("[data-dialog-form] + button");
+const closeFormBtn = document.querySelector("[data-dialog-form] button");
 const bookForm = document.querySelector("[data-book-form]");
 const shelf = document.querySelector("[data-shelf]");
 
 bookForm.addEventListener("submit", addBookToLibrary);
 
 // Initial "Add Book" button opens the dialog modally
-showButton.addEventListener("click", () => {
-  dialog.showModal();
+showFormBtn.addEventListener("click", () => {
+  dialogForm.showModal();
 });
 
 // "Close" button closes the dialog
-closeButton.addEventListener("click", () => {
-  dialog.close();
+closeFormBtn.addEventListener("click", () => {
+  dialogForm.close();
 });
 
 //Library array containing placeholder book
@@ -54,7 +54,7 @@ function addBookToLibrary(event) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
   showBookOnShelf();
-  dialog.close();
+  dialogForm.close();
   bookForm.reset();
   labelReset();
 }
