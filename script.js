@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", ()=> {
-  addEventListener("DOMContentLoaded", showBookOnShelf); //Add placeholder book upon page load
+  showBookOnShelf(); //Add placeholder book upon page load
   document.querySelectorAll("input").forEach(input => {
     checkInput(input); // Check input on page load
     input.addEventListener("input", () => {
@@ -87,13 +87,18 @@ function showBookOnShelf() {
     newDiv.classList.add("book");
     newDiv.setAttribute("data-id", index);
     toggleBookColor(index, newDiv);
-    deleteBtn.addEventListener("click", ()=> {
+    deleteBtn.addEventListener("click", (event)=> {
+      event.stopPropagation();
       deleteBook(newDiv);
     });
-    readBtn.addEventListener("click", ()=> {
+    readBtn.addEventListener("click", (event)=> {
+      event.stopPropagation();
       myLibrary[index].read = !myLibrary[index].read;
       toggleBookColor(index, newDiv);
     });
+
+
+    openBook(newDiv, index);
   });
 }
 
@@ -110,6 +115,12 @@ function deleteBook(book) {
   shelf.removeChild(book);
   myLibrary.splice(book.getAttribute("data-id"), 1);
   showBookOnShelf();
+}
+
+function openBook(book, index) {
+  book.addEventListener("click", ()=> {
+    alert(`Book: ${myLibrary[index].title}. Author: ${myLibrary[index].author}. Pages: ${myLibrary[index].pages}. Read: ${myLibrary[index].read}`);
+  })
 }
 
 function checkInput(input) {
