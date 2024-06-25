@@ -7,7 +7,8 @@
 
 :root {
     --page-font: 'Poppins', Helvetica, Arial, sans-serif;
-    --main-padding: 20px;
+    --medium-px: 20px;
+    --small-px: 10px;
 
     --shelf-clr: 25, 76%, 31%;
     --white-clr: 0, 0%, 100%;
@@ -17,11 +18,11 @@
     --box-shadow: 0, 0%, 0%;
 }
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
 html {
     font-size: 18px;
@@ -34,11 +35,12 @@ body {
     color: hsl(var(--black-clr));
 }
 
-header, h1, .bookshelf .shelf, .book, .form-container {
+header, h1, .bookshelf .shelf, .book, 
+.form-container, .form-row, .form-row-checkbox {
     display: flex;
 }
 
-.form-container {
+.form-container, .form-row, .book, .form-row-checkbox {
     justify-content: center;
 }
 
@@ -51,36 +53,35 @@ header, h1, .bookshelf .shelf, .book, .form-container {
 header {
     align-items: center;
     background-color: hsl(var(--blue-clr));
-    padding: var(--main-padding);
+    padding: var(--medium-px);
 }
 
 h1 {
     color: hsl(var(--white-clr));
-    padding-left: 10px;
+    padding-left: var(--small-px);
 }
 
 .library-main {
     min-height: calc(100vh - 94px);
-    padding: var(--main-padding);    
+    padding: var(--medium-px);    
     background-image: url(img/Bookswall_generated.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; 
+    background-position: center;
 }
 
 .shelf {
     flex-wrap: wrap;
     background-color: #ebe0d4;
     border: 15px solid #cb9c7c;
-    border-radius: 10px;
+    border-radius: var(--small-px);
     gap: 1.70em;
-    padding: var(--main-padding);
+    padding: var(--medium-px);
     min-height: 340px;
     box-shadow: 5px 5px 0 hsl(var(--black-clr), 0.3);
 }
 
 .book {
-    justify-content: center;
     align-items: center;
     width: 4.7rem;
     height: 14.5rem;
@@ -116,7 +117,7 @@ h1 {
 
 dialog {
     border: none;
-    border-radius: 8px;
+    border-radius: var(--small-px);
     box-shadow: 0 4px 6px hsl(var(--box-shadow), 0.1);
     margin: auto;
 }
@@ -131,7 +132,6 @@ dialog {
     background-color: transparent;
     font-size: 1.2rem;
     color: var(--black-clr);
-    background-color: transparent;
     width: 50px;
     height: 50px;
 }
@@ -164,7 +164,7 @@ button {
     box-shadow: none;
     color: hsl(var(--white-clr));
     text-align: end;
-    padding-right: var(--main-padding);
+    padding-right: var(--medium-px);
 }
 
 button:hover {
@@ -176,8 +176,16 @@ button:hover {
 .book > button:nth-child(2) {
     position: absolute;
     border: 0;
-    display: none;
     font-size: 1.2rem;
+    background-color: hsl(var(--blue-clr), 0.7);
+    box-shadow: none;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.book > button:nth-child(1):hover,
+.book > button:nth-child(2):hover {
+    background-color: hsl(var(--blue-clr));
 }
 
 .book > button:nth-child(1) {
@@ -193,23 +201,26 @@ button:hover {
 }
 
 .book:hover > button {
-    display: block;
+    opacity: 1;
     z-index: 1;
 }
 
 /* Form related classes */
 .form-input-container {
-    padding: var(--main-padding);
+    padding: var(--medium-px);
+}
+
+.read-label, .form-row {
+    position: relative;
 }
 
 .form-row {
-    position: relative;
-    padding: 5px 0px 5px 0px;
+    padding: 7px 0px 7px 0px;
     color: #666;
 }
 
 .form-row-checkbox {
-    padding: 10px 0px 10px 0px;
+    gap: var(--small-px);
 }
 
 .form-row input {
@@ -221,13 +232,9 @@ button:hover {
     position: absolute;
 }
 
-.read-label {
-    position: relative;
-}
-
 .input {
     border: 2px solid hsl(var(--blue-clr), 0.5);
-    border-radius: 10px;
+    border-radius: var(--small-px);
     height: 50px;
     caret-color: hsl(var(--blue-clr));
     transition: border 500ms;
@@ -265,10 +272,6 @@ label:hover {
 dialog[open] {
     animation: scaleIn 0.5s ease normal;
 }
-
-dialog {
-    animation: scaleOut 0.5s ease normal;
-}
   
 @keyframes scaleIn{
     from {
@@ -276,14 +279,5 @@ dialog {
     }
     to {
         scale: 1;
-    }
-}
-
-@keyframes scaleOut{
-    from {
-        scale: 1;
-    }
-    to {
-        scale: 0;
     }
 }
