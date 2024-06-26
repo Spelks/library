@@ -71,38 +71,38 @@ function labelReset() {
 function showBookOnShelf() {
   shelf.innerHTML = "";
   myLibrary.forEach((book, index) => {
-    const newDiv = document.createElement("div");
+    const bookDiv = document.createElement("div");
     const deleteBtn = document.createElement("button");
     const readBtn = document.createElement("button");
-    const newP = document.createElement("p");
-    const authorP = document.createElement("p");
-    shelf.appendChild(newDiv);
-    newDiv.appendChild(deleteBtn);
-    newDiv.appendChild(readBtn);
+    const bookTitle = document.createElement("p");
+    const author = document.createElement("p");
+    shelf.appendChild(bookDiv);
+    bookDiv.appendChild(deleteBtn);
+    bookDiv.appendChild(readBtn);
     deleteBtn.textContent = "X";
     readBtn.textContent = "Read?"
-    newDiv.appendChild(newP);
-    newDiv.appendChild(authorP);
-    newP.textContent = book.title;
-    authorP.textContent = book.author;
-    newDiv.classList.add("book");
-    newDiv.setAttribute("data-id", index);
-    toggleBookColor(index, newDiv);
+    bookDiv.appendChild(bookTitle);
+    bookDiv.appendChild(author);
+    bookTitle.textContent = book.title;
+    author.textContent = book.author;
+    bookDiv.classList.add("book");
+    bookDiv.setAttribute("data-id", index);
+    toggleBookColor(bookDiv, index);
     deleteBtn.addEventListener("click", (event)=> {
       event.stopPropagation();
-      deleteBook(newDiv);
+      deleteBook(bookDiv);
     });
     readBtn.addEventListener("click", (event)=> {
       event.stopPropagation();
       myLibrary[index].read = !myLibrary[index].read;
-      toggleBookColor(index, newDiv);
+      toggleBookColor(bookDiv, index);
     });
-    openBook(newDiv, index);
+    openBook(bookDiv, index);
   });
 }
 
 //flips background color of book based on read state
-function toggleBookColor(index, book) {
+function toggleBookColor(book, index) {
   if(myLibrary[index].read === true) {
     book.style.backgroundColor = "rgb(124, 202, 124)";
   } else if (myLibrary[index].read === false) {
