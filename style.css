@@ -225,6 +225,15 @@ button:hover {
     font-size: 1.2rem;
 }
 
+.book-info-row-button {
+    display: flex;
+    justify-content: center;
+}
+
+.book-info-row-button button:nth-of-type(2) {
+    background-color: red;
+}
+
 .book-info-row p {
     margin-right: var(--medium-px);
     color: hsl(var(--blue-clr));
@@ -318,4 +327,3 @@ dialog[open] {
         scale: 1;
     }
 }
-
