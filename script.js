@@ -19,6 +19,7 @@ const popupPages = document.querySelector("[data-popup-pages");
 const popupRead = document.querySelector("[data-popup-read");
 const dialogInfo = document.querySelector("[data-dialog-info]");
 const closeInfoBtn = document.querySelector("[data-dialog-info] button");
+const deleteInfoBtn = document.querySelector("[data-popup-delete-btn]");
 
 //eventListeners for dialog pop-ups and book form
 closeInfoBtn.addEventListener("click", ()=> dialogInfo.close());
@@ -132,6 +133,10 @@ function openBook(book, index) {
       popupRead.textContent = "Have Not Read";
       popupRead.style.color = "red";
     }
+    deleteInfoBtn.addEventListener("click", ()=> {
+      deleteBook(book);
+      dialogInfo.close();
+    })
   })
 }
 
