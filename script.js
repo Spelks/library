@@ -67,7 +67,6 @@ function labelReset() {
   pages.classList.remove("is-valid");
 }
 
-
 //Creates the visual representation of the book and applies a data attribute
 function showBookOnShelf() {
   shelf.innerHTML = "";
@@ -91,14 +90,16 @@ function showBookOnShelf() {
     toggleBookColor(bookDiv, index);
     deleteBtn.addEventListener("click", (event)=> {
       event.stopPropagation();
-      deleteBook(bookDiv);
+      deleteBook(index);
     });
     readBtn.addEventListener("click", (event)=> {
       event.stopPropagation();
       myLibrary[index].read = !myLibrary[index].read;
       toggleBookColor(bookDiv, index);
     });
-    openBook(bookDiv, index);
+    bookDiv.addEventListener("click", ()=> {
+      openBook(index);
+    })
   });
 }
 
@@ -112,15 +113,13 @@ function toggleBookColor(book, index) {
 }
 
 //Removes book div (and all children) matching library array object then runs book function to refresh 
-function deleteBook(book) {
-  shelf.removeChild(book);
-  myLibrary.splice(book.getAttribute("data-id"), 1);
+function deleteBook(index) {
+  myLibrary.splice(index, 1);
   showBookOnShelf();
 }
 
 //pulls object data from myLibrary and displays in pop-up when book is clicked
-function openBook(book, index) {
-  book.addEventListener("click", ()=> {
+function openBook(index) {
     dialogInfo.showModal();
     popupTitle.textContent = myLibrary[index].title;
     popupAuthor.textContent = myLibrary[index].author;
@@ -133,11 +132,10 @@ function openBook(book, index) {
       popupRead.textContent = "Have Not Read";
       popupRead.style.color = "red";
     }
-    deleteInfoBtn.addEventListener("click", ()=> {
-      deleteBook(book);
+    deleteInfoBtn.onclick = function() {
+      deleteBook(index);
       dialogInfo.close();
-    })
-  })
+    }
 }
 
 //adds/removes class to position label state
