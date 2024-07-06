@@ -34,6 +34,12 @@ const myLibrary = [
     "author": "Harper Lee",
     "pages": "281",
     "read": true
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "pages": "310",
+    "read": false
   }
 ];
 
