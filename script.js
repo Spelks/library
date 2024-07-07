@@ -19,6 +19,7 @@ const popupPages = document.querySelector("[data-popup-pages");
 const popupRead = document.querySelector("[data-popup-read");
 const dialogInfo = document.querySelector("[data-dialog-info]");
 const closeInfoBtn = document.querySelector("[data-dialog-info] button");
+const readInfoBtn = document.querySelector("[data-popup-read-btn]");
 const deleteInfoBtn = document.querySelector("[data-popup-delete-btn]");
 
 //eventListeners for dialog pop-ups and book form
@@ -131,20 +132,7 @@ function openBook(book, index) {
     popupAuthor.textContent = myLibrary[index].author;
     popupPages.textContent = myLibrary[index].pages;
     popupRead.textContent = myLibrary[index].read;
-    if(myLibrary[index].read === true) {
-      popupRead.textContent = "Have Read";
-      popupRead.style.color = "green";
-    } else {
-      popupRead.textContent = "Have Not Read";
-      popupRead.style.color = "red";
-    }
-    deleteInfoBtn.onclick = function() {
-      deleteBook(index);
-      dialogInfo.close();
-    }
-    readInfoBtn.onclick = function() {
-      myLibrary[index].read = !myLibrary[index].read;
-      toggleBookColor(book, index);
+    function updateBookReadStatus() {
       if(myLibrary[index].read === true) {
         popupRead.textContent = "Have Read";
         popupRead.style.color = "green";
@@ -152,6 +140,16 @@ function openBook(book, index) {
         popupRead.textContent = "Have Not Read";
         popupRead.style.color = "red";
       }
+    }
+    updateBookReadStatus(); //Call new function to immediately update the read text on pop-ups
+    deleteInfoBtn.onclick = function() {
+      deleteBook(index);
+      dialogInfo.close();
+    }
+    readInfoBtn.onclick = function() {
+      myLibrary[index].read = !myLibrary[index].read;
+      toggleBookColor(book, index);
+      updateBookReadStatus();
     }
 }
 
@@ -163,8 +161,3 @@ function checkInput(input) {
     input.classList.remove("is-valid");
   }
 }
-
-const readInfoBtn = document.querySelector("[data-popup-read-btn]");
-// readInfoBtn.onclick = function() {
-//   alert("Clicked!");
-// }
