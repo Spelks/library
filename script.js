@@ -30,18 +30,8 @@ bookForm.addEventListener("submit", addBookToLibrary);
 
 //Library array containing placeholder book
 const myLibrary = [
-  {
-    "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
-    "pages": "281",
-    "read": true
-  },
-  {
-    "title": "The Hobbit",
-    "author": "J.R.R. Tolkien",
-    "pages": "310",
-    "read": false
-  }
+  new Book("To Kill a Mockingbird", "Harper Lee", 281, true),
+  new Book("The Hobbit", "J.R.R. Tolkien", 310, false)
 ];
 
 // Book constructor function to create new book objects
@@ -59,7 +49,7 @@ function addBookToLibrary(event) {
   const author = document.querySelector("[data-author]").value;
   const pages = document.querySelector("[data-pages]").value;
   const read = document.querySelector("[data-read").checked;
-  const book = new Book(title, author, pages, read);
+  const book = new Book(title, author, parseInt(pages), read);
   myLibrary.push(book);
   showBookOnShelf();
   dialogForm.close();
