@@ -42,6 +42,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleReadStatus = function() {
+  this.read = !this.read;
+}
+
 //Gets the form data and pushes it to the myLibrary array
 function addBookToLibrary(event) {
   event.preventDefault();
@@ -91,7 +95,7 @@ function showBookOnShelf() {
     });
     readBtn.addEventListener("click", (event)=> {
       event.stopPropagation();
-      myLibrary[index].read = !myLibrary[index].read;
+      myLibrary[index].toggleReadStatus();
       toggleBookColor(bookDiv, index);
     });
     bookDiv.addEventListener("click", ()=> {
@@ -137,7 +141,7 @@ function openBook(book, index) {
       dialogInfo.close();
     }
     readInfoBtn.onclick = function() {
-      myLibrary[index].read = !myLibrary[index].read;
+      myLibrary[index].toggleReadStatus();
       toggleBookColor(book, index);
       updateBookReadStatus();
     }
