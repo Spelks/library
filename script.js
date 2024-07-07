@@ -104,7 +104,7 @@ function showBookOnShelf() {
       toggleBookColor(bookDiv, index);
     });
     bookDiv.addEventListener("click", ()=> {
-      openBook(index);
+      openBook(bookDiv, index);
     })
   });
 }
@@ -125,7 +125,7 @@ function deleteBook(index) {
 }
 
 //pulls object data from myLibrary and displays in pop-up when book is clicked
-function openBook(index) {
+function openBook(book, index) {
     dialogInfo.showModal();
     popupTitle.textContent = myLibrary[index].title;
     popupAuthor.textContent = myLibrary[index].author;
@@ -142,6 +142,17 @@ function openBook(index) {
       deleteBook(index);
       dialogInfo.close();
     }
+    readInfoBtn.onclick = function() {
+      myLibrary[index].read = !myLibrary[index].read;
+      toggleBookColor(book, index);
+      if(myLibrary[index].read === true) {
+        popupRead.textContent = "Have Read";
+        popupRead.style.color = "green";
+      } else {
+        popupRead.textContent = "Have Not Read";
+        popupRead.style.color = "red";
+      }
+    }
 }
 
 //adds/removes class to position label state
@@ -152,3 +163,8 @@ function checkInput(input) {
     input.classList.remove("is-valid");
   }
 }
+
+const readInfoBtn = document.querySelector("[data-popup-read-btn]");
+// readInfoBtn.onclick = function() {
+//   alert("Clicked!");
+// }
