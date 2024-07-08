@@ -80,8 +80,8 @@ function showBookOnShelf() {
     shelf.appendChild(bookDiv);
     bookDiv.appendChild(deleteBtn);
     bookDiv.appendChild(readBtn);
-    deleteBtn.textContent = "X";
-    readBtn.textContent = "Read?"
+    deleteBtn.textContent = String.fromCodePoint(0x1F5D1);
+    readBtn.textContent = String.fromCodePoint(0x1F453);
     bookDiv.appendChild(bookTitle);
     bookDiv.appendChild(author);
     bookTitle.textContent = book.title;
